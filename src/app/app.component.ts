@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'controle-pecas';
+
+  tituloCombo = 'combo teste';
+  tituloInput = 'input teste';
+
+  lista: string[] = [
+    'primeiro',
+    'combo',
+    'padronizado'
+  ]
+
+  textoChild: string = '';
+
+  capturaValor(event: string) {
+    this.textoChild = event;
+  }
 }
