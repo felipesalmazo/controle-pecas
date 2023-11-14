@@ -1,0 +1,17 @@
+
+.main {
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.rodape {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.fonte {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}

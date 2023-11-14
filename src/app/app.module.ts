@@ -8,6 +8,10 @@ import { VeiculosListagemComponent } from './veiculos/veiculos-listagem/veiculos
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { PecasCadastrarAlterarDetalharComponent } from './pecas/pecas-cadastrar-alterar-detalhar/pecas-cadastrar-alterar-detalhar.component';
 import { VeiculosCadastrarAlterarDetalharComponent } from './veiculos/veiculos-cadastrar-alterar-detalhar/veiculos-cadastrar-alterar-detalhar.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { TituloPaginaComponent } from './shared/titulo-pagina/titulo-pagina.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,15 @@ import { VeiculosCadastrarAlterarDetalharComponent } from './veiculos/veiculos-c
     VeiculosListagemComponent,
     PaginaPrincipalComponent,
     PecasCadastrarAlterarDetalharComponent,
-    VeiculosCadastrarAlterarDetalharComponent
+    VeiculosCadastrarAlterarDetalharComponent,
+    HeaderComponent,
+    FooterComponent,
+    TituloPaginaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
