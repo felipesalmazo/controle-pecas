@@ -1,0 +1,66 @@
+<div class="container-fluid">
+
+  <app-titulo-pagina [titulo]="titulo"></app-titulo-pagina>
+
+  <div class="row">
+    <form>
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-2">
+            <label for="pecasInput" class="fonte fomr-label">Placa:</label>
+            <input name="pecasInput" type="text" class="form-control" mask="AAA-AAAA" (keyup)="getPlaca(identPlaca.value)" #identPlaca/>
+          </div>
+
+          <div class="col-lg-2">
+            <label for="marcaInput" class="fonte fomr-label">Marca:</label>
+            <input name="marcaInput" type="text" class="form-control" (keyup)="getMarca(identMarca.value)" #identMarca/>
+          </div>
+
+          <div class="col-lg-2">
+            <label for="modeloInput" class="fonte fomr-label">Modelo:</label>
+            <input name="modeloInput" type="text" class="form-control" (keyup)="getModelo(identModelo.value)" #identModelo/>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row p-5">
+    <div class="col-lg-12">
+      <table class="table table-light table-hover fonte">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col"></th>
+            <th scope="col">Placa</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Ano de Fabricação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listaVeiculos">
+            <th scope="row"><input type="radio" name="teste" id="" (click)="getVeiculo(item.placa)"></th>
+            <td>{{item.placa}}</td>
+            <td>{{item.marca}}</td>
+            <td>{{item.modelo}}</td>
+            <td>{{item.anoFabricacao}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div style="display: flex; justify-content: space-between; margin-top: 0.5em;" class="col-lg-12">
+      <div style="display: flex;">
+        <button type="button" class="btn btn-rodape fonte">PESQUISAR</button>
+        <button type="button" class="btn btn-rodape fonte">CADASTRAR</button>
+        <button type="button" class="btn btn-rodape fonte">ALTERAR</button>
+        <button type="button" class="btn btn-rodape fonte">DETALHAR</button>
+        <button type="button" class="btn btn-rodape fonte">EXCLUIR</button>
+        <button type="button" class="btn btn-rodape fonte" (click)="voltar()">VOLTAR</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
