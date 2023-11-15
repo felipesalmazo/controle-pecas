@@ -14,10 +14,10 @@ export class PaginaPrincipalComponent implements OnInit {
   }
 
   goToListagemVeiculos() {
-    this.router.navigate(['/veiculos-listagem'])
+    this.router.navigate(['/veiculos/listagem'])
   }
 
   goToListagemPecas() {
-    this.router.navigate(['/pecas-listagem'])
+    this.router.navigate(['/pecas/listagem'])
   }
 }

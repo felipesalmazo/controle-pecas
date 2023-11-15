@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { Veiculo } from './../../model/veiculo';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalComponent } from 'src/app/shared/modal/modal.component';
+import { ModalOpcaoComponent } from 'src/app/shared/modal-opcao/modal-opcao.component';
 
 @Component({
   selector: 'app-veiculos-listagem',
@@ -8,6 +10,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./veiculos-listagem.component.css', '../../app.component.css']
 })
 export class VeiculosListagemComponent implements OnInit {
+
+  @ViewChild('modalOpcao')
+  modalOpcao: ModalOpcaoComponent = new ModalOpcaoComponent();
 
   listaVeiculos: Veiculo[] = [
     {placa:'eph-5056', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
@@ -23,7 +28,7 @@ export class VeiculosListagemComponent implements OnInit {
   ]
 
   titulo: string = 'Veículos > Listagem';
-  veiculo: string = '';
+  veiculo: string = 'teste';
 
   constructor(private router: Router) { }
 
@@ -51,4 +56,28 @@ export class VeiculosListagemComponent implements OnInit {
     this.router.navigate(['/inicio']);
   }
 
+  cadastro() {
+    this.router.navigate(['/veiculos', 'cadastro']);
+  }
+
+  alteracao() {
+    this.router.navigate(['/veiculos', 'alteracao', this.veiculo])
+  }
+
+  detalhe() {
+    this.router.navigate(['/veiculos', 'detalhar']);
+  }
+
+  abrirModalOpcaoExcluir() {
+    this.modalOpcao.titulo = 'Exclusão';
+    this.modalOpcao.mensagem = 'Deseja realmente excluir o item selecionado?';
+
+    this.modalOpcao.abrirModal()
+  }
+
+  verificarExclusao(event: any) {
+    if(event == 'sim') {
+      console.log('excluiu', event)
+    }
+  }
 }
