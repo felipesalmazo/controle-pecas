@@ -3,6 +3,8 @@ import { Veiculo } from './../../model/veiculo';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 import { ModalOpcaoComponent } from 'src/app/shared/modal-opcao/modal-opcao.component';
+import { VeiculoService } from 'src/app/services/veiculo.service';
+import { WebStorageUtil } from 'src/app/utils/web-storage-util';
 
 @Component({
   selector: 'app-veiculos-listagem',
@@ -14,26 +16,26 @@ export class VeiculosListagemComponent implements OnInit {
   @ViewChild('modalOpcao')
   modalOpcao: ModalOpcaoComponent = new ModalOpcaoComponent();
 
-  listaVeiculos: Veiculo[] = [
-    {placa:'eph-5056', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
-    {placa:'eph-5898', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
-    {placa:'eph-5056', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
-    {placa:'eph-5898', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
-    {placa:'eph-5056', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
-    {placa:'eph-5898', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
-    {placa:'eph-5056', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
-    {placa:'eph-5898', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
-    {placa:'eph-5056', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]},
-    {placa:'eph-5898', marca:'Chevrolet', modelo:'astra', anoFabricacao:'2011', motorizacao:'2.0', pecas:[]}
-  ]
+  listaVeiculos: Veiculo[] = []
 
   titulo: string = 'Veículos > Listagem';
-  veiculo: string = 'teste';
 
-  constructor(private router: Router) { }
+  desabilitaBotoes: boolean = true;
+
+  private veiculo!: Veiculo;
+
+  constructor(private router: Router, private veiculoService: VeiculoService) { }
 
   ngOnInit(): void {
-    
+    this.veiculoService.getAllVeiculos()
+    .then(
+      res => {
+        this.listaVeiculos = res as Veiculo[]
+        WebStorageUtil.set('listaVeiculos', this.listaVeiculos);
+      }
+    ).catch(e => {
+      console.log(e);
+    })
   }
 
   getPlaca(valor: string) {
@@ -48,8 +50,9 @@ export class VeiculosListagemComponent implements OnInit {
     console.log("marca", valor);
   }
 
-  getVeiculo(valor: string) {
-    console.log("veiculo completo", valor)
+  getVeiculo(valor: Veiculo) {
+    this.desabilitaBotoes = false;
+    this.veiculoService.veiculo = valor;
   }
 
   voltar() {

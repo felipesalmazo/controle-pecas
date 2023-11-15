@@ -1,0 +1,112 @@
+{
+  "veiculos": [
+    {
+      "id": 1,
+      "placa": "EPH-4578",
+      "marca": "Chevrolet",
+      "modelo": "Astra",
+      "anoFabricacao": "2009",
+      "motorizacao": "2.0"
+    },
+    {
+      "id": 2,
+      "placa": "EGX-3499",
+      "marca": "Volkswagen",
+      "modelo": "Polo",
+      "anoFabricacao": "2023",
+      "motorizacao": "1.0 TSI"
+    },
+    {
+      "id": 3,
+      "placa": "EWH-4071",
+      "marca": "Ford",
+      "modelo": "Fiesta",
+      "anoFabricacao": "2017",
+      "motorizacao": "1.6"
+    },
+    {
+      "placa": "EWH-4171",
+      "marca": "Ford",
+      "modelo": "Ecosport",
+      "anoFabricacao": "2017",
+      "motorizacao": "2.0",
+      "id": 4
+    },
+    {
+      "placa": "EWH-4671",
+      "marca": "Ford",
+      "modelo": "Ka",
+      "anoFabricacao": "2017",
+      "motorizacao": "1.6",
+      "id": 5
+    },
+    {
+      "placa": "EWH-4271",
+      "marca": "Ford",
+      "modelo": "Fusion",
+      "anoFabricacao": "2017",
+      "motorizacao": "2.5",
+      "id": 6
+    },
+    {
+      "placa": "EPH4578",
+      "marca": "Chevrolet",
+      "modelo": "Astra",
+      "anoFabricacao": "2009",
+      "motorizacao": "2.0",
+      "id": 7
+    },
+    {
+      "placa": "EPX5789",
+      "marca": "Aston Martin",
+      "modelo": "DB9",
+      "anoFabricacao": "2023",
+      "motorizacao": "5.2 Supercharger",
+      "id": 8
+    }
+  ],
+  "pecas": [
+    {
+      "id": 1,
+      "numeroSerie": "EDHAIDNTR7766",
+      "marca": "Bosch",
+      "Nome": "Cabo de Vela",
+      "veiculoId": 1
+    },
+    {
+      "id": 2,
+      "numeroSerie": "AHUFHEWUF0987",
+      "marca": "NGK",
+      "Nome": "Vela de Iridium",
+      "veiculoId": 2
+    },
+    {
+      "id": 3,
+      "numeroSerie": "834BHB32483NJK",
+      "marca": "Motul",
+      "Nome": "Óleo 5L",
+      "veiculoId": 3
+    },
+    {
+      "numeroSerie": "834BHB32483NJK",
+      "marca": "Motul",
+      "Nome": "Óleo 1L",
+      "veiculoId": 3,
+      "id": 4
+    },
+    {
+      "numeroSerie": "834BHB32483NJK",
+      "marca": "Motul",
+      "Nome": "Óleo 4L",
+      "veiculoId": 3,
+      "id": 5
+    },
+    {
+      "numeroSerie": "834BHB32483NJK",
+      "marca": "Motul",
+      "Nome": "Óleo 0L",
+      "veiculoId": 3,
+      "id": 6
+    }
+  ]
+}
