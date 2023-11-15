@@ -14,6 +14,7 @@ import { TituloPaginaComponent } from './shared/titulo-pagina/titulo-pagina.comp
 import { NgxMaskModule } from 'ngx-mask';
 import { ModalComponent } from './shared/modal/modal.component';
 import { ModalOpcaoComponent } from './shared/modal-opcao/modal-opcao.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { ModalOpcaoComponent } from './shared/modal-opcao/modal-opcao.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
