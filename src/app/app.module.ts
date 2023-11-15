@@ -12,6 +12,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { TituloPaginaComponent } from './shared/titulo-pagina/titulo-pagina.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { ModalComponent } from './shared/modal/modal.component';
+import { ModalOpcaoComponent } from './shared/modal-opcao/modal-opcao.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NgxMaskModule } from 'ngx-mask';
     VeiculosCadastrarAlterarDetalharComponent,
     HeaderComponent,
     FooterComponent,
-    TituloPaginaComponent
+    TituloPaginaComponent,
+    ModalComponent,
+    ModalOpcaoComponent
   ],
   imports: [
     BrowserModule,
