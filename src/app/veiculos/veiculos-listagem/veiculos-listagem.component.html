@@ -8,17 +8,7 @@
         <div class="row">
           <div class="col-lg-2">
             <label for="pecasInput" class="fonte fomr-label">Placa:</label>
-            <input name="pecasInput" type="text" class="form-control" mask="AAA-AAAA" (keyup)="getPlaca(identPlaca.value)" #identPlaca/>
-          </div>
-
-          <div class="col-lg-2">
-            <label for="marcaInput" class="fonte fomr-label">Marca:</label>
-            <input name="marcaInput" type="text" class="form-control" (keyup)="getMarca(identMarca.value)" #identMarca/>
-          </div>
-
-          <div class="col-lg-2">
-            <label for="modeloInput" class="fonte fomr-label">Modelo:</label>
-            <input name="modeloInput" type="text" class="form-control" (keyup)="getModelo(identModelo.value)" #identModelo/>
+            <input name="pecasInput" type="text" class="form-control" mask="AAA-AAAA" (keyup)="this.filtro = identPlaca.value" #identPlaca/>
           </div>
         </div>
       </div>
@@ -26,8 +16,8 @@
   </div>
 
   <div class="row p-5">
-    <div class="col-lg-12">
-      <table class="table table-light table-hover fonte">
+    <div class="col-lg-12 table-responsive" *ngIf="listaVeiculos.length !== 0">
+      <table class="table table-light table-hover fonte ">
         <thead>
           <tr class="table-dark">
             <th scope="col"></th>
@@ -38,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of listaVeiculos">
+          <tr *ngFor="let item of (listaVeiculos | filtroTabelaVeiculos: filtro)">
             <th scope="row"><input type="radio" name="radioTabela" (click)="getVeiculo(item)"></th>
             <td>{{item.placa | mask: "AAA-AAAA"}}</td>
             <td>{{item.marca}}</td>
@@ -48,12 +38,12 @@
         </tbody>
       </table>
     </div>
+    <div *ngIf="listaVeiculos.length === 0" class="text-center fonte"> Cadastre um Veículo! </div>
   </div>
 
   <div class="row">
     <div style="display: flex; justify-content: space-between; margin-top: 0.5em;" class="col-lg-12">
       <div style="display: flex;">
-        <button type="button" class="btn btn-rodape fonte">PESQUISAR</button>
         <button type="button" class="btn btn-rodape fonte" (click)="cadastro()">CADASTRAR</button>
         <button type="button" class="btn btn-rodape fonte" [disabled]="desabilitaBotoes" (click)="alteracao()">ALTERAR</button>
         <button type="button" class="btn btn-rodape fonte" [disabled]="desabilitaBotoes" (click)="detalhe()">DETALHAR</button>

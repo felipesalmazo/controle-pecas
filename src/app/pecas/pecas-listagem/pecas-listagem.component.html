@@ -1,2 +1,57 @@
-<p>pecas-listagem works!</p>
+<div class="container-fluid">
+
+  <app-titulo-pagina [titulo]="titulo"></app-titulo-pagina>
+
+  <div class="row">
+    <form>
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-2">
+            <label for="nserieInput" class="fonte fomr-label">Número de Série:</label>
+            <input name="nserieInput" type="text" class="form-control" (keyup)="this.filtro = identNserie.value" #identNserie/>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row p-5">
+    <div class="col-lg-12 table-responsive" *ngIf="this.listaPecas.length !== 0">
+      <table class="table table-light table-hover fonte">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col"></th>
+            <th scope="col">Número de Série</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Nome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of (listaPecas | filtroTabela : filtro)">
+            <th scope="row"><input type="radio" name="radioTabela" (click)="getPeca(item)"></th>
+            <td>{{item.numeroSerie}}</td>
+            <td>{{item.marca}}</td>
+            <td>{{item.nome}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="listaPecas.length === 0" class="text-center fonte"> Cadastre uma Peça! </div>
+  </div>
+
+  <div class="row">
+    <div style="display: flex; justify-content: space-between; margin-top: 0.5em;" class="col-lg-12">
+      <div style="display: flex;">
+        <button type="button" class="btn btn-rodape fonte" (click)="cadastro()">CADASTRAR</button>
+        <button type="button" class="btn btn-rodape fonte" [disabled]="desabilitaBotoes" (click)="alteracao()">ALTERAR</button>
+        <button type="button" class="btn btn-rodape fonte" [disabled]="desabilitaBotoes" (click)="detalhe()">DETALHAR</button>
+        <button type="button" class="btn btn-rodape fonte" [disabled]="desabilitaBotoes" (click)="abrirModalOpcaoExcluir()">EXCLUIR</button>
+        <button type="button" class="btn btn-rodape fonte" (click)="voltar()">VOLTAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-modal-opcao #modalOpcao (event)="verificarExclusao($event)"></app-modal-opcao>
 

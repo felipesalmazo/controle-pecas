@@ -15,7 +15,9 @@ import { NgxMaskModule } from 'ngx-mask';
 import { ModalComponent } from './shared/modal/modal.component';
 import { ModalOpcaoComponent } from './shared/modal-opcao/modal-opcao.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FiltroTabelaPipe } from './pipes/filtro-tabela.pipe';
+import { FiltroTabelaVeiculosPipe } from './pipes/filtro-tabela-veiculos.pipe'
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http'
     FooterComponent,
     TituloPaginaComponent,
     ModalComponent,
-    ModalOpcaoComponent
+    ModalOpcaoComponent,
+    FiltroTabelaPipe,
+    FiltroTabelaVeiculosPipe
   ],
   imports: [
     BrowserModule,

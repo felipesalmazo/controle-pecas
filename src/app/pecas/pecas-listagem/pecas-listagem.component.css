@@ -1,0 +1,8 @@
+.btn-rodape {
+  background-color: #AB0045;
+  margin-left: 10px;
+  color: white;
+  border-radius: 0px !important;
+}
+
+.table-responsive {max-height:300px;}

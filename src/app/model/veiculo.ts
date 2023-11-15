@@ -1,7 +1,7 @@
 import { Peca } from "./peca";
 
 export class Veiculo {
-  id?: number;
+  id: number = 0;
   placa: string ='';
   marca: string='';
   modelo: string='';

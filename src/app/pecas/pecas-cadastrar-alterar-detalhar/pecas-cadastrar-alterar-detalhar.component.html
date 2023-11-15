@@ -1,1 +1,47 @@
-<p>pecas-cadastrar-alterar-detalhar works!</p>
+<div class="container-fluid">
+
+  <app-titulo-pagina [titulo]="titulo"></app-titulo-pagina>
+
+  <div>
+    <form [formGroup]="pecaForm" (ngSubmit)="cadastrar(pecaForm.value)">
+      <div class="row">
+          <div class="col-lg-4 mt-3">
+            <label for="nserieInput" class="fonte fomr-label">Número de Série:</label>
+            <input formControlName="numeroSerie" [(ngModel)]="this.peca.numeroSerie" name="nserieInput" type="text" class="form-control" [disabled]="desabilitaCampos"/>
+            <div class="erro" *ngIf="pecaForm.get('numeroSerie')?.errors?.['required'] && pecaForm.get('numeroSerie')?.touched">Campo Numero de Série é obrigatório!</div>
+          </div>
+          <div class="col-lg-4 mt-3">
+            <label for="marcaInput" class="fonte fomr-label">Marca:</label>
+            <input formControlName="marca" [(ngModel)]="this.peca.marca" name="marcaInput" type="text" class="form-control" [disabled]="desabilitaCampos" maxlength="50"/>
+            <div class="erro" *ngIf="pecaForm.get('marca')?.errors?.['pattern'] && pecaForm.get('marca')?.touched">Não digite Números e nem acentos!</div>
+          </div>
+          <div class="col-lg-4 mt-3">
+            <label for="nomeInput" class="fonte fomr-label">Nome:</label>
+            <input formControlName="nome" [(ngModel)]="this.peca.nome" name="nomeInput" type="text" class="form-control" [disabled]="desabilitaCampos" maxlength="50"/>
+            <div class="erro" *ngIf="pecaForm.get('nome')?.errors?.['pattern'] && pecaForm.get('nome')?.touched">Não digite palavras com acento</div>
+          </div>
+          <div class="col-lg-4 mt-3">
+            <label for="selectVeiculo" class="fonte fomr-label">Veículo:</label>
+            <select [(ngModel)]="this.peca.veiculoId" formControlName="veiculoId" name="selectVeiculo" class="form-select" aria-label="Default select example">
+              <option *ngFor="let item of listaVeiculos" [value]="item.id">{{item.modelo + ' - ' + item.placa}}</option>
+            </select>
+          </div>
+      </div>
+    
+      <div class="row">
+        <div style="display: flex; justify-content: space-between; margin-top: 0.5em;" class="col-lg-12">
+          <div style="display: flex;">
+            <button type="submit" class="btn btn-rodape fonte" *ngIf="mostraBotaoCadastrar" [disabled]="pecaForm.invalid" >CADASTRAR</button>
+            <button type="button" class="btn btn-rodape fonte" *ngIf="mostraBotaoAlterar" (click)="alterar()">ALTERAR</button>
+            <button type="button" class="btn btn-rodape fonte" style="margin-left: 10px;" (click)="voltar()">VOLTAR</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+</div>
+  
+
+<app-modal #modal (event)="fecharModal()"></app-modal>
+

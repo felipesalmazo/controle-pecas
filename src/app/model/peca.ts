@@ -1,6 +1,6 @@
 
 export class Peca {
-  id?: number;
+  id: number = 0;
   numeroSerie: string = '';
   marca: string = '';
   nome: string = '';
