@@ -13,12 +13,12 @@
           <div class="col-lg-4 mt-3">
             <label for="marcaInput" class="fonte fomr-label">Marca:</label>
             <input formControlName="marca" [(ngModel)]="this.veiculo.marca" name="marcaInput" type="text" class="form-control" [disabled]="desabilitaCampos" maxlength="50"/>
-            <div class="erro" *ngIf="veiculoForm.get('marca')?.errors?.['pattern'] && veiculoForm.get('marca')?.touched">Não digite Números!</div>
+            <div class="erro" *ngIf="veiculoForm.get('marca')?.errors?.['pattern'] && veiculoForm.get('marca')?.touched">Não digite Números e nem acentos!</div>
           </div>
           <div class="col-lg-4 mt-3">
             <label for="modeloInput" class="fonte fomr-label">Modelo:</label>
             <input formControlName="modelo" [(ngModel)]="this.veiculo.modelo" name="modeloInput" type="text" class="form-control" [disabled]="desabilitaCampos" maxlength="50"/>
-            <div class="erro" *ngIf="veiculoForm.get('modelo')?.errors?.['pattern'] && veiculoForm.get('modelo')?.touched">Não digite Números</div>
+            <div class="erro" *ngIf="veiculoForm.get('modelo')?.errors?.['pattern'] && veiculoForm.get('modelo')?.touched">Não digite palavras com acento</div>
           </div>
           <div class="col-lg-4 mt-3">
             <label for="anoFabricInput" class="fonte fomr-label">Ano de Fabricação:</label>

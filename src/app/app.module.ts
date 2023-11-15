@@ -15,6 +15,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { ModalComponent } from './shared/modal/modal.component';
 import { ModalOpcaoComponent } from './shared/modal-opcao/modal-opcao.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     NgxMaskModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

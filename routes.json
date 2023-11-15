@@ -1,0 +1,5 @@
+{
+  "/veiculos/buscar/:id" : "/veiculos?id=:id",
+  "/veiculos/:placa/:marca/:modelo" : "/veiculos?placa=:placa&marca=:marca&modelo=:modelo",
+  "/pecas/buscar/:veiculoId" : "/pecas?veiculoId=:veiculoId"
+}

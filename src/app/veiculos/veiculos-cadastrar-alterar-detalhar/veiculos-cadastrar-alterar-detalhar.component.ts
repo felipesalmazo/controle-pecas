@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Veiculo } from 'src/app/model/veiculo';
+import { VeiculoService } from 'src/app/services/veiculo.service';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 
 @Component({
@@ -9,7 +10,7 @@ import { ModalComponent } from 'src/app/shared/modal/modal.component';
   templateUrl: './veiculos-cadastrar-alterar-detalhar.component.html',
   styleUrls: ['./veiculos-cadastrar-alterar-detalhar.component.css', '../../app.component.css']
 })
-export class VeiculosCadastrarAlterarDetalharComponent implements OnInit {
+export class VeiculosCadastrarAlterarDetalharComponent implements OnInit, OnDestroy {
 
   @ViewChild('modal')
   modal!: ModalComponent;
@@ -23,30 +24,18 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit {
 
   veiculoForm = this.formBuilder.group({
     placa: ['',Validators.required],
-    marca: ['', [Validators.required, Validators.pattern('[a-zA-z]+')]],
-    modelo: ['', [Validators.required, Validators.pattern('[a-zA-z]+')]],
+    marca: ['', [Validators.required, Validators.pattern('[a-zA-z ]+')]],
+    modelo: ['', [Validators.required, Validators.pattern('[a-zA-z0-9 ]+')]],
     anoFabricacao: [''],
     motorizacao: [''],
   })
 
   veiculo: Veiculo = new Veiculo();
 
-  constructor(private path: ActivatedRoute, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private path: ActivatedRoute, private router: Router, private formBuilder: FormBuilder, private veiculoService: VeiculoService) { }
 
   ngOnInit(): void {
     this.acao = this.path.snapshot.paramMap.get('acao');
-    
-    // if (acao == 'cadastro') {
-    //   this.titulo = 'Veículos > Listagem > Cadastro';
-    //   this.mostraBotaoAlterar = false;
-    //   this.mostraBotaoCadastrar = true;
-    // }
-
-    // if (acao == 'alteracao') {
-    //   this.titulo = 'Veículos > Listagem > Cadastro';
-    //   this.mostraBotaoAlterar = false;
-    //   this.mostraBotaoCadastrar = true;
-    // }
 
     switch (this.acao) {
       case 'cadastro':
@@ -68,6 +57,7 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit {
         this.mostraBotaoAlterar = false;
         this.mostraBotaoCadastrar = false;
         this.desabilitaCampos = true;
+        this.veiculo = this.veiculoService.veiculo;
         break;
 
       default:
@@ -95,13 +85,19 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit {
     this.router.navigate(['/veiculos/listagem']);
   }
 
-  cadastrar(valor: any) {
-
-    localStorage.setItem('veiculo', JSON.stringify(valor));
-
-    this.modal.titulo = 'Aviso';
-    this.modal.mensagem = 'Cadastro realizado com sucesso!';
-    this.modal.abrirModal();
+  cadastrar(valor: Veiculo) {
+    this.veiculoService.saveVeiculo(valor).then(
+      res => {
+        this.modal.titulo = 'Aviso';
+        this.modal.mensagem = 'Cadastro realizado com sucesso!';
+        this.modal.abrirModal();
+      }
+    ).catch(e => {
+      this.modal.titulo = 'Aviso';
+      this.modal.mensagem = e;
+      this.modal.abrirModal();
+    })
+    
   }
 
   alterar(placa: string, marca: string, modelo: string, anoFabricacao: string, motorizacao: string) {
@@ -112,6 +108,10 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit {
 
   fecharModal() {
     this.router.navigate(['/veiculos/listagem']);
+  }
+
+  ngOnDestroy(): void {
+    this.veiculoService.veiculo = new Veiculo();
   }
 
 }
