@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Veiculo } from '../model/veiculo';
-import { lastValueFrom } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,10 @@ export class VeiculoService {
   public async getAllVeiculos(): Promise<Veiculo[]> {
     var resultado = this.httpClient.get<Veiculo[]>(`${this.URL}`, this.httpOptions);
     return await lastValueFrom(resultado);
+  }
+
+  getAllObservable(): Observable<Veiculo[]> {
+    return this.httpClient.get<Veiculo[]>(`${this.URL}`, this.httpOptions);
   }
 
   public async saveVeiculo(veiculo: Veiculo): Promise<Veiculo> {

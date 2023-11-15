@@ -5,6 +5,7 @@ import { ModalComponent } from 'src/app/shared/modal/modal.component';
 import { ModalOpcaoComponent } from 'src/app/shared/modal-opcao/modal-opcao.component';
 import { VeiculoService } from 'src/app/services/veiculo.service';
 import { WebStorageUtil } from 'src/app/utils/web-storage-util';
+import { error } from 'console';
 
 @Component({
   selector: 'app-veiculos-listagem',
@@ -27,15 +28,17 @@ export class VeiculosListagemComponent implements OnInit {
   constructor(private router: Router, private veiculoService: VeiculoService) { }
 
   ngOnInit(): void {
-    this.veiculoService.getAllVeiculos()
-    .then(
-      res => {
-        this.listaVeiculos = res as Veiculo[]
-        WebStorageUtil.set('listaVeiculos', this.listaVeiculos);
+    this.veiculoService.getAllObservable().subscribe(
+      {
+        next: (valor) => {
+          this.listaVeiculos = valor;
+          WebStorageUtil.set('listaVeiculos', this.listaVeiculos);
+        },
+        error: (error) => {
+          alert(error)
+        }
       }
-    ).catch(e => {
-      console.log(e);
-    })
+    )
   }
 
   getPlaca(valor: string) {
