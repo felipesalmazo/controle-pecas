@@ -2,7 +2,7 @@
   "veiculos": [
     {
       "id": 1,
-      "placa": "EPH-4578",
+      "placa": "EPH4578",
       "marca": "Chevrolet",
       "modelo": "Astra",
       "anoFabricacao": "2009",
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "placa": "EGX-3499",
+      "placa": "EGX3499",
       "marca": "Volkswagen",
       "modelo": "Polo",
       "anoFabricacao": "2023",
@@ -18,14 +18,14 @@
     },
     {
       "id": 3,
-      "placa": "EWH-4071",
+      "placa": "EWH4071",
       "marca": "Ford",
       "modelo": "Fiesta",
       "anoFabricacao": "2017",
       "motorizacao": "1.6"
     },
     {
-      "placa": "EWH-4171",
+      "placa": "EWH4171",
       "marca": "Ford",
       "modelo": "Ecosport",
       "anoFabricacao": "2017",
@@ -33,7 +33,7 @@
       "id": 4
     },
     {
-      "placa": "EWH-4671",
+      "placa": "EWH4671",
       "marca": "Ford",
       "modelo": "Ka",
       "anoFabricacao": "2017",
@@ -41,7 +41,7 @@
       "id": 5
     },
     {
-      "placa": "EWH-4271",
+      "placa": "EWH4271",
       "marca": "Ford",
       "modelo": "Fusion",
       "anoFabricacao": "2017",

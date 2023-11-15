@@ -40,7 +40,7 @@
         <tbody>
           <tr *ngFor="let item of listaVeiculos">
             <th scope="row"><input type="radio" name="radioTabela" (click)="getVeiculo(item)"></th>
-            <td>{{item.placa}}</td>
+            <td>{{item.placa | mask: "AAA-AAAA"}}</td>
             <td>{{item.marca}}</td>
             <td>{{item.modelo}}</td>
             <td>{{item.anoFabricacao}}</td>
