@@ -12,3 +12,5 @@
 .bordaForm {
   border-color: darkorange;
 }
+
+.table-responsive {max-height:300px;}

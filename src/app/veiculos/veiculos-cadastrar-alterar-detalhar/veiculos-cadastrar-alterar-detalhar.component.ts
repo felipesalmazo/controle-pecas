@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Peca } from 'src/app/model/peca';
 import { Veiculo } from 'src/app/model/veiculo';
+import { PecaService } from 'src/app/services/peca.service';
 import { VeiculoService } from 'src/app/services/veiculo.service';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 
@@ -31,8 +33,9 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit, OnDest
   })
 
   veiculo: Veiculo = new Veiculo();
+  listaPecas: Peca[] = [];
 
-  constructor(private path: ActivatedRoute, private router: Router, private formBuilder: FormBuilder, private veiculoService: VeiculoService) { }
+  constructor(private path: ActivatedRoute, private router: Router, private formBuilder: FormBuilder, private veiculoService: VeiculoService, private pecaService: PecaService) { }
 
   ngOnInit(): void {
     this.acao = this.path.snapshot.paramMap.get('acao');
@@ -50,6 +53,7 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit, OnDest
         this.mostraBotaoAlterar = true;
         this.mostraBotaoCadastrar = false;
         this.desabilitaCampos = false;
+        this.veiculo = this.veiculoService.veiculo;
         break;
 
       case 'detalhar':
@@ -58,6 +62,19 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit, OnDest
         this.mostraBotaoCadastrar = false;
         this.desabilitaCampos = true;
         this.veiculo = this.veiculoService.veiculo;
+
+        this.pecaService.getPecaByVeiculo(this.veiculo.id).subscribe(
+          {
+            next: (valor) => {
+              this.listaPecas = valor;
+            },
+            error: (error) => {
+              alert(error)
+            }
+          }
+        )
+
+        this.veiculoForm.disable();
         break;
 
       default:
@@ -100,10 +117,18 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit, OnDest
     
   }
 
-  alterar(placa: string, marca: string, modelo: string, anoFabricacao: string, motorizacao: string) {
-    this.modal.titulo = 'Aviso';
-    this.modal.mensagem = 'Alteração realizada com sucesso!';
-    this.modal.abrirModal();
+  alterar() {
+    this.veiculoService.editVeiculo(this.veiculo).then(
+      res => {
+        this.modal.titulo = 'Aviso';
+        this.modal.mensagem = 'Alteração realizada com sucesso!';
+        this.modal.abrirModal();
+      }
+    ).catch(e => {
+      this.modal.titulo = 'Aviso';
+      this.modal.mensagem = JSON.stringify(e);
+      this.modal.abrirModal();
+    })
   }
 
   fecharModal() {
