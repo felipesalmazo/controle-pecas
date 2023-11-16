@@ -1,0 +1,16 @@
+.btn-rodape {
+  background-color: #AB0045;
+  color: white;
+  border-radius: 0px !important;
+  margin-top: 20px;
+}
+
+.erro {
+  color: red;
+}
+
+.bordaForm {
+  border-color: darkorange;
+}
+
+.table-responsive {max-height:300px;}

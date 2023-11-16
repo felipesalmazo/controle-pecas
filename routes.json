@@ -1,0 +1,5 @@
+{
+  "/veiculos/buscar/:id" : "/veiculos?id=:id",
+  "/pecas/veiculo/:veiculoId" : "/pecas?veiculoId=:veiculoId",
+  "/pecas/buscar/:id" : "/pecas?id=:id"
+}

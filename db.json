@@ -1,0 +1,51 @@
+{
+  "veiculos": [
+    {
+      "placa": "LWI3636",
+      "marca": "Mazda",
+      "modelo": "626 Sedan Mec",
+      "anoFabricacao": "2007",
+      "motorizacao": "2.7",
+      "id": 1
+    },
+    {
+      "placa": "NCF3172",
+      "marca": "Mahindra",
+      "modelo": "PIKUP CD",
+      "anoFabricacao": "2058",
+      "motorizacao": "2.2",
+      "id": 2
+    },
+    {
+      "placa": "EPX5789",
+      "marca": "Aston Martin",
+      "modelo": "DB9",
+      "anoFabricacao": "2023",
+      "motorizacao": "2.5",
+      "id": 3
+    }
+  ],
+  "pecas": [
+    {
+      "numeroSerie": "56748484",
+      "marca": "Motul",
+      "nome": "Oleo de motor",
+      "veiculoId": "2",
+      "id": 2
+    },
+    {
+      "numeroSerie": "589788",
+      "marca": "Master Power",
+      "nome": "Turbina",
+      "veiculoId": "1",
+      "id": 3
+    },
+    {
+      "numeroSerie": "234234ffv",
+      "marca": "Bosch",
+      "nome": "Vela de Iridium",
+      "veiculoId": "3",
+      "id": 4
+    }
+  ]
+}

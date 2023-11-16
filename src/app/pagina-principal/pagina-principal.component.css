@@ -1,0 +1,15 @@
+.btn-veiculos{
+  height: 275px;
+  width: 275px;
+  background-color: #AB0045;
+  color: white !important;
+  border-radius: 20px;
+}
+
+.btn-pecas {
+  height: 275px;
+  width: 275px;
+  background-color: #090B2E;
+  color: white !important;
+  border-radius: 20px;
+}
