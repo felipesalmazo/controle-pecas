@@ -82,22 +82,6 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit, OnDest
     }
   }
 
-  getPlaca(valor: string) {
-    console.log("placa", valor);
-  }
-
-  getModelo(valor: string) {
-    console.log("modelo", valor);
-  }
-
-  getMarca(valor: string) {
-    console.log("marca", valor);
-  }
-
-  getVeiculo(valor: string) {
-    console.log("veiculo completo", valor)
-  }
-
   voltar() {
     this.router.navigate(['/veiculos/listagem']);
   }
@@ -111,7 +95,7 @@ export class VeiculosCadastrarAlterarDetalharComponent implements OnInit, OnDest
       }
     ).catch(e => {
       this.modal.titulo = 'Aviso';
-      this.modal.mensagem = e;
+      this.modal.mensagem = JSON.stringify(e);
       this.modal.abrirModal();
     })
     

@@ -39,18 +39,6 @@ export class PecasListagemComponent implements OnInit {
     )
   }
 
-  getNserie(valor: string) {
-    console.log("placa", valor);
-  }
-
-  getNome(valor: string) {
-    console.log("modelo", valor);
-  }
-
-  getMarca(valor: string) {
-    console.log("marca", valor);
-  }
-
   getPeca(valor: Peca) {
     this.desabilitaBotoes = false;
     this.pecaService.peca = valor;
