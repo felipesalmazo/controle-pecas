@@ -1,5 +1,9 @@
 # controle-pecas
 
+## Link para Aplicação no GitHub pages
+
+https://felipesalmazo.github.io/controle-pecas/
+
 ## Protótipo
 
 https://www.figma.com/file/c87TmBDu2RpHxJJBq5oahI/Projeto-Frameworks?type=design&node-id=7%3A28&mode=design&t=iIJAwU6DUqZdki14-1
