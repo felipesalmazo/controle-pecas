@@ -62,18 +62,6 @@ export class PecasCadastrarAlterarDetalharComponent implements OnInit, OnDestroy
         this.mostraBotaoCadastrar = false;
         this.desabilitaCampos = true;
         this.peca = this.pecaService.peca;
-
-        // this.veiculoService.getVeiculoById(this.peca.veiculoId).then(
-        //   res => {
-        //     this.pecaForm.controls['veiculo'].setValue(res);
-        //   }
-        // ).catch(e => {
-        //   this.modal.titulo = 'Aviso';
-        //   this.modal.mensagem = JSON.stringify(e);
-        //   this.modal.abrirModal();
-        // })
-
-        
         this.pecaForm.disable();
         break;
 
@@ -90,18 +78,6 @@ export class PecasCadastrarAlterarDetalharComponent implements OnInit, OnDestroy
       this.modal.mensagem = JSON.stringify(e);
       this.modal.abrirModal();
     })
-  }
-
-  getPlaca(valor: string) {
-    console.log("placa", valor);
-  }
-
-  getModelo(valor: string) {
-    console.log("modelo", valor);
-  }
-
-  getMarca(valor: string) {
-    console.log("marca", valor);
   }
 
   voltar() {
